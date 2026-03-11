@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIPP Miami — Focus SIS</title>
+<style>
+/* ============================================
+   CSS VARIABLES — KIPP Miami Brand
+   Colors extracted from kippmiami.org
+   ============================================ */
+:root {
+  --kipp-navy: #001E62;
+  --kipp-navy-light: #1C3773;
+  --kipp-orange: #EF980F;
+  --kipp-orange-light: #fff7eb;
+  --kipp-blue: #3EB6E5;
+  --kipp-blue-light: #eaf7fc;
+  --kipp-lime: #B8CB1E;
+  --kipp-red: #EE3C37;
+  --focus-orange: #E8601C;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+  --transition: all 0.2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Whitney A', 'Whitney B', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--gray-800);
+  line-height: 1.6;
+  background: var(--gray-50);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   NAVIGATION — KIPP Navy + Orange accent
+   ============================================ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--kipp-navy);
+  border-bottom: 3px solid var(--kipp-orange);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.nav-brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-brand-logos img {
+  height: 36px;
+  width: auto;
+}
+
+.nav-brand-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.25);
+}
+
+.nav-brand-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.nav-brand-sub {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.65;
+  display: block;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-tab {
+  padding: 16px 18px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+}
+
+.nav-tab:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+.nav-tab.active { color: var(--white); border-bottom-color: var(--kipp-orange); }
+
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* ============================================
+   PAGES
+   ============================================ */
+.page { display: none; animation: fadeIn 0.3s ease; }
+.page.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.section-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   HERO — KIPP Navy gradient
+   ============================================ */
+.hero {
+  background: linear-gradient(135deg, var(--kipp-navy) 0%, var(--kipp-navy-light) 60%, #2a4fa0 100%);
+  color: var(--white);
+  padding: 72px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(239,152,15,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(62,182,229,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* hero-focus-logo removed — title-only hero */
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.hero h1 .highlight { color: var(--kipp-orange); }
+
+.hero-subtitle {
+  font-size: clamp(15px, 2.2vw, 18px);
+  max-width: 620px;
+  margin: 0 auto 36px;
+  opacity: 0.9;
+  line-height: 1.55;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(239,152,15,0.15);
+  border: 1px solid rgba(239,152,15,0.3);
+  color: var(--kipp-orange);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================
+   FEATURE CARDS
+   ============================================ */
+.features-section { padding: 48px 0 16px; }
+
+.features-section .section-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.features-section .section-subtitle {
+  text-align: center;
+  color: var(--gray-500);
+  margin-bottom: 36px;
+  font-size: 15px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 48px;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+  position: relative;
+}
+
+.feature-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.feature-card .card-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--gray-100);
+  line-height: 1;
+}
+
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.feature-icon.navy { background: #e8ecf5; }
+.feature-icon.orange { background: var(--kipp-orange-light); }
+.feature-icon.blue { background: var(--kipp-blue-light); }
+
+.feature-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--kipp-navy);
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* ============================================
+   CONSOLIDATION VISUAL
+   ============================================ */
+.consolidation {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 0 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  text-align: center;
+}
+
+.consolidation h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--kipp-navy);
+  margin-bottom: 6px;
+}
+
+.consolidation .subtitle {
+  color: var(--gray-500);
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.merge-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.old-system {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 14px 22px;
+  text-align: center;
+  min-width: 130px;
+}
+
+.old-system .name { font-weight: 600; font-size: 14px; color: var(--gray-600); }
+.old-system .role { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+.merge-arrow { font-size: 26px; color: var(--kipp-orange); }
+
+.new-system {
+  background: linear-gradient(135deg, var(--kipp-navy), var(--kipp-navy-light));
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 22px 32px;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--kipp-orange);
+}
+
+.new-system .name { font-weight: 700; font-size: 18px; }
+.new-system .role { font-size: 12px; opacity: 0.8; margin-top: 3px; }
+
+/* ============================================
+   SCREENSHOT PREVIEW
+   ============================================ */
+.screenshot-section {
+  padding: 24px 0 48px;
+  text-align: center;
+}
+
+.screenshot-section .caption {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 16px;
+}
+
+.screenshot-frame {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.screenshot-frame img {
+  width: 100%;
+  display: block;
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+.timeline-page-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+}
+
+.timeline-page-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--kipp-navy);
+  margin-bottom: 12px;
+}
+
+.timeline-page-header p {
+  color: var(--gray-500);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.timeline {
+  position: relative;
+  padding: 24px 0 64px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gray-200);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 72px;
+  margin-bottom: 32px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 22px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid var(--kipp-navy);
+  background: var(--white);
+  z-index: 1;
+}
+
+.timeline-dot.active {
+  background: var(--kipp-navy);
+  box-shadow: 0 0 0 4px rgba(0,30,98,0.15);
+}
+
+.timeline-dot.future { border-color: var(--gray-300); }
+
+.timeline-content {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+}
+
+.timeline-date {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--kipp-navy);
+  margin-bottom: 6px;
+}
+
+.timeline-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.tag-now { background: #e8ecf5; color: var(--kipp-navy); }
+.tag-upcoming { background: var(--kipp-orange-light); color: #92400e; }
+.tag-future { background: var(--gray-100); color: var(--gray-500); }
+
+/* ============================================
+   ROLES
+   ============================================ */
+.roles-header {
+  text-align: center;
+  padding: 48px 24px 16px;
+}
+
+.roles-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--kipp-navy);
+  margin-bottom: 12px;
+}
+
+.roles-header p {
+  color: var(--gray-500);
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.role-selector {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 24px;
+}
+
+.role-btn {
+  padding: 10px 20px;
+  border-radius: 24px;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.role-btn:hover { border-color: var(--kipp-navy); color: var(--kipp-navy); }
+
+.role-btn.active {
+  background: var(--kipp-navy);
+  border-color: var(--kipp-navy);
+  color: var(--white);
+}
+
+.role-detail { display: none; animation: fadeIn 0.3s ease; }
+.role-detail.active { display: block; }
+
+.role-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  margin: 0 0 48px;
+  overflow: hidden;
+}
+
+.role-card-header {
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #e8ecf5, var(--white));
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.role-card-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--kipp-navy);
+  margin-bottom: 6px;
+}
+
+.role-card-header .reassurance {
+  font-size: 15px;
+  color: var(--kipp-orange);
+  font-weight: 600;
+}
+
+.changes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.change-col { padding: 28px 32px; }
+.change-col:first-child { border-right: 1px solid var(--gray-200); }
+
+.change-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.change-col h4.staying { color: var(--kipp-navy); }
+.change-col h4.changing { color: var(--kipp-orange); }
+
+.change-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.change-item .icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.icon.check { background: #e8ecf5; color: var(--kipp-navy); }
+.icon.new { background: var(--kipp-orange-light); color: var(--kipp-orange); }
+
+.role-card-footer {
+  padding: 20px 32px;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  font-size: 14px;
+  color: var(--gray-600);
+}
+
+.role-card-footer strong { color: var(--kipp-navy); }
+
+/* ============================================
+   FAQ
+   ============================================ */
+.faq-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+}
+
+.faq-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--kipp-navy);
+  margin-bottom: 12px;
+}
+
+.faq-header p {
+  color: var(--gray-500);
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.faq-categories {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 24px 32px;
+}
+
+.faq-cat-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.faq-cat-btn:hover { border-color: var(--kipp-navy); color: var(--kipp-navy); }
+.faq-cat-btn.active { background: var(--kipp-navy); border-color: var(--kipp-navy); color: var(--white); }
+
+.faq-list {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.faq-item {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  background: var(--white);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item:hover { box-shadow: var(--shadow); }
+
+.faq-question {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-800);
+  user-select: none;
+}
+
+.faq-question .arrow {
+  font-size: 18px;
+  color: var(--gray-400);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.faq-item.open .faq-question .arrow { transform: rotate(180deg); }
+.faq-item.open .faq-question { color: var(--kipp-navy); }
+
+.faq-answer {
+  display: none;
+  padding: 0 24px 18px;
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-answer { display: block; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--kipp-navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 13px;
+}
+
+.footer-built {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-tabs { display: none; }
+  .nav-tabs.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--kipp-navy); border-top: 1px solid rgba(255,255,255,0.1); padding: 8px 0; }
+  .nav-tab { padding: 14px 24px; border-bottom: none; }
+  .nav-mobile-toggle { display: block; }
+  .merge-visual { flex-direction: column; }
+  .merge-arrow { transform: rotate(90deg); }
+  .changes-grid { grid-template-columns: 1fr; }
+  .change-col:first-child { border-right: none; border-bottom: 1px solid var(--gray-200); }
+  .hero { padding: 48px 24px 40px; }
+  .consolidation { padding: 28px 20px; }
+  .nav-brand-text { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#" onclick="showPage('splash'); return false;">
+      <div class="nav-brand-logos">
+        <svg height="30" viewBox="0 0 260 52" xmlns="http://www.w3.org/2000/svg" aria-label="KIPP Miami">
+          <text x="0" y="30" font-family="'Whitney A','Whitney B',Arial,sans-serif" font-size="30" font-weight="800" letter-spacing="2">
+            <tspan fill="white">KIPP </tspan><tspan fill="#EF980F">MIAMI</tspan>
+          </text>
+          <text x="42" y="46" font-family="'Whitney A','Whitney B',Arial,sans-serif" font-size="11" font-weight="500" fill="rgba(255,255,255,0.7)" letter-spacing="3.5">PUBLIC SCHOOLS</text>
+        </svg>
+        <div class="nav-brand-divider"></div>
+        <span style="display:inline-flex; align-items:center; background:white; border-radius:6px; padding:2px; height:32px; width:32px; overflow:hidden;">
+          <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1709147693/fsusschool/tlvnzzynjyk8b0eoztle/focusowl.png" alt="Focus SIS" style="height:28px; width:28px; object-fit:contain;">
+        </span>
+      </div>
+      <div>
+        <span class="nav-brand-text">Focus SIS Launch</span>
+        <span class="nav-brand-sub">2026-27 School Year</span>
+      </div>
+    </a>
+    <button class="nav-mobile-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation">&#9776;</button>
+    <div class="nav-tabs" id="navTabs">
+      <a class="nav-tab active" data-page="splash" onclick="showPage('splash')">Launch</a>
+      <a class="nav-tab" data-page="timeline" onclick="showPage('timeline')">Project Overview</a>
+      <a class="nav-tab" data-page="roles" onclick="showPage('roles')">What's Changing</a>
+      <a class="nav-tab" data-page="faq" onclick="showPage('faq')">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================
+     PAGE 1: LAUNCH / SPLASH
+     ============================================ -->
+<div class="page active" id="page-splash">
+  <div class="hero">
+    <h1>Welcome to <span class="highlight">Focus</span>,<br>KIPP Miami's A+ Solution</h1>
+    <p class="hero-subtitle">This year, KIPP Miami is moving to Focus — a Florida-built platform that brings gradebooks, attendance, assessments, and parent communication into one place. It's a big change for the better.</p>
+    <div class="hero-badge">Launching 2026-27 School Year</div>
+  </div>
+
+  <div class="section-wrap">
+    <div class="consolidation">
+      <h2>Three Platforms Become One</h2>
+      <p class="subtitle">Everything you need — one login, one app.</p>
+      <div class="merge-visual">
+        <div class="old-system"><div class="name">PowerSchool</div><div class="role">Student Records &amp; Grades</div></div>
+        <div class="old-system"><div class="name">DeansList</div><div class="role">Attendance &amp; Culture</div></div>
+        <div class="old-system"><div class="name">Illuminate</div><div class="role">Assessments</div></div>
+        <div class="merge-arrow">&rarr;</div>
+        <div class="new-system"><div class="name">Focus</div><div class="role">All-in-one platform</div></div>
+      </div>
+    </div>
+
+    <div class="features-section">
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="card-num">1</span>
+          <div class="feature-icon navy">&#128218;</div>
+          <h3>One Place for Everything</h3>
+          <p>Focus replaces PowerSchool, DeansList, and Illuminate. Gradebook, attendance, student records, assessments, discipline, and parent communication — all in a single platform with a single login.</p>
+        </div>
+        <div class="feature-card">
+          <span class="card-num">2</span>
+          <div class="feature-icon orange">&#127966;</div>
+          <h3>Built for Florida</h3>
+          <p>Focus is used by nearly every school district in the state. Gradebooks, state reporting, FAST alignment, and school grade tracking are built in — not bolted on. The platform speaks Florida.</p>
+        </div>
+        <div class="feature-card">
+          <span class="card-num">3</span>
+          <div class="feature-icon blue">&#128172;</div>
+          <h3>Parent Communication — All in One App</h3>
+          <p>Messages to families go out via email, text, or phone call — all from Focus. Communications are translated into the family's home language automatically, with multiple language options and two-way reply.</p>
+        </div>
+        <div class="feature-card">
+          <span class="card-num">4</span>
+          <div class="feature-icon navy">&#128241;</div>
+          <h3>Mobile App for Everything</h3>
+          <p>Take attendance, enter grades, message parents, and award positive behaviors — all from the Focus mobile app on your phone. Available on iPhone and Android.</p>
+        </div>
+        <div class="feature-card">
+          <span class="card-num">5</span>
+          <div class="feature-icon orange">&#128203;</div>
+          <h3>New &amp; Improved Assessment Tools</h3>
+          <p>Focus includes a built-in assessment creator with every item type students see on FAST — including drag-and-drop and gridded response. Aligned to Florida state standards with a 30,000+ item bank.</p>
+        </div>
+        <div class="feature-card">
+          <span class="card-num">6</span>
+          <div class="feature-icon blue">&#128274;</div>
+          <h3>Secure &amp; Compliant</h3>
+          <p>FERPA and HIPAA compliant, hosted on AWS with encryption at every level. Granular permissions ensure the right people see the right data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-section">
+      <div class="caption">A look at the Focus dashboard — your new home base</div>
+      <div class="screenshot-frame">
+        <img src="dashboard-preview.jpg" alt="Focus SIS Dashboard showing alerts, announcements, demographics, and student search">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 2: PROJECT OVERVIEW / TIMELINE
+     ============================================ -->
+<div class="page" id="page-timeline">
+  <div class="section-wrap">
+    <div class="timeline-page-header">
+      <h2>Project Overview</h2>
+      <p>Our path from here to a successful launch. Training and support will be provided at every step — no one is expected to figure this out alone.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Spring 2026</div>
+          <h3>System Setup &amp; Configuration</h3>
+          <p>Focus is being configured for KIPP Miami — setting up school structures, enrollment, course catalogs, attendance codes, grading scales, and compliance rules. The data team and our implementation partners are handling the technical setup behind the scenes.</p>
+          <span class="timeline-tag tag-now">In Progress</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Spring 2026</div>
+          <h3>Data Migration &amp; Validation</h3>
+          <p>Student records, enrollment history, transcripts, grades, and Special Education data will be migrated from PowerSchool into Focus. The data team will run multiple validation passes to ensure everything transferred accurately. School staff may be asked to verify sample student records.</p>
+          <span class="timeline-tag tag-now">In Progress</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Before Go-Live</div>
+          <h3>Staff Training</h3>
+          <p>Role-specific training will roll out in stages — operations and admin staff first, then teachers. Training will be hands-on with a sandbox environment where you can practice without affecting real data. Quick-reference guides and video walkthroughs will be available. By the first day of school, all staff will be equipped and ready.</p>
+          <span class="timeline-tag tag-upcoming">Upcoming</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Summer 2026</div>
+          <h3>Go-Live</h3>
+          <p>Focus becomes the live platform for KIPP Miami for the 2026-27 school year. All student records, grades, attendance, scheduling, and parent access will run through Focus from this point forward.</p>
+          <span class="timeline-tag tag-future">Target</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">August 2026</div>
+          <h3>First Day of School</h3>
+          <p>By the time students and families arrive, Focus will be fully operational. Training refreshers will be available in the first weeks of school, and support channels will be active to handle any questions quickly.</p>
+          <span class="timeline-tag tag-future">Target</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Fall 2026</div>
+          <h3>First State Reporting Milestone</h3>
+          <p>The first FTE Survey submission to the Florida Department of Education using Focus. This confirms that enrollment data, attendance, and student information are reporting correctly in the new platform. The data and compliance teams will be monitoring this closely.</p>
+          <span class="timeline-tag tag-future">Milestone</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 3: WHAT'S CHANGING FOR ME
+     ============================================ -->
+<div class="page" id="page-roles">
+  <div class="section-wrap">
+    <div class="roles-header">
+      <h2>What's Changing For Me?</h2>
+      <p>Select your role to see what stays the same, what's new, and what support you'll get.</p>
+    </div>
+
+    <div class="role-selector">
+      <button class="role-btn active" data-role="teacher" onclick="showRole('teacher')">Teachers</button>
+      <button class="role-btn" data-role="ops" onclick="showRole('ops')">School Ops &amp; Registrars</button>
+      <button class="role-btn" data-role="leaders" onclick="showRole('leaders')">School Leaders &amp; APs</button>
+      <button class="role-btn" data-role="sped" onclick="showRole('sped')">Special Ed Coordinators</button>
+      <button class="role-btn" data-role="families" onclick="showRole('families')">Parents &amp; Families</button>
+    </div>
+
+    <!-- TEACHERS -->
+    <div class="role-detail active" id="role-teacher">
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>For Teachers</h3>
+          <div class="reassurance">Gradebook, assessments, attendance, and student culture — aligned in one place.</div>
+        </div>
+        <div class="changes-grid">
+          <div class="change-col">
+            <h4 class="staying">What Stays the Same</h4>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>You still take attendance daily — same process, new interface</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Your curriculum materials, lesson plans, and instructional tools don't change</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Instructional tech apps stay the same — Clever, i-Ready, Amplify, mClass, and others are not changing</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Your gradebook workflow stays familiar — daily entries, categories, and weighting</span></div>
+          </div>
+          <div class="change-col">
+            <h4 class="changing">What's New &amp; Better</h4>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>One login for grades, attendance, student info, assessments, and parent messaging — no more switching between PowerSchool, DeansList, and Illuminate</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Full mobile app — take attendance, enter grades, message parents, and give positive behavior awards from your phone</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Built-in assessment creator that matches FAST item types — create practice tests aligned to state standards in minutes</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Messages to families auto-translate with multiple language options and two-way reply</span></div>
+          </div>
+        </div>
+        <div class="role-card-footer">
+          <strong>Training:</strong> Hands-on, role-specific training will be provided before go-live. All teachers will be prepared and supported by the first day of school.
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHOOL OPS / REGISTRARS -->
+    <div class="role-detail" id="role-ops">
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>For School Ops &amp; Registrars</h3>
+          <div class="reassurance">Less manual double-entry. A platform built for our needs that we own and manage.</div>
+        </div>
+        <div class="changes-grid">
+          <div class="change-col">
+            <h4 class="staying">What Stays the Same</h4>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Your core responsibilities — enrollment, attendance, scheduling, student records, reporting</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>State reporting deadlines and FTE submission requirements</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Working with the data team on compliance questions</span></div>
+          </div>
+          <div class="change-col">
+            <h4 class="changing">What's New &amp; Better</h4>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>State reporting validation built into daily workflows — errors caught at point of entry, not at submission time</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Course Code Directory syncs nightly with FLDOE — no manual updates when courses change</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Focus Transfer: students coming from other FL districts auto-import their records, test history, transcripts, and immunizations in real time</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Master schedule builder automates period/section optimization with drag-and-drop adjustment</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>FTE simulation reports let you check your data before submitting to the state</span></div>
+          </div>
+        </div>
+        <div class="role-card-footer">
+          <strong>Training:</strong> Dedicated hands-on training covering enrollment, scheduling, attendance, and state reporting. Ops staff will be among the first trained.
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHOOL LEADERS -->
+    <div class="role-detail" id="role-leaders">
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>For School Leaders &amp; APs</h3>
+          <div class="reassurance">Key protocols aligned so you can focus on what matters — students and assessments.</div>
+        </div>
+        <div class="changes-grid">
+          <div class="change-col">
+            <h4 class="staying">What Stays the Same</h4>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Your role in monitoring attendance, discipline, culture, and academic progress</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Existing academic programs and curriculum (Fishtank, Illustrative Math, etc.)</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Instructional tech apps stay the same — Clever, i-Ready, Amplify, mClass, and others are not changing</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Support from the data team and ops team for reporting and compliance</span></div>
+          </div>
+          <div class="change-col">
+            <h4 class="changing">What's New &amp; Better</h4>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Electronic discipline referral workflow — teacher to admin, with automated notifications, SESIR compliance, and equitable enforcement rules built in</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Built-in assessment tools aligned to FAST — create, administer, and review practice assessments directly in the platform</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Real-time school grade component tracking: learning gains, L25/L30, graduation rate, acceleration — all pre-calculated using exact state formulas</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Positive behaviors system with parent push notifications — culture tracking without a separate platform</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Impersonate any user role for troubleshooting — see exactly what a teacher or parent sees</span></div>
+          </div>
+        </div>
+        <div class="role-card-footer">
+          <strong>Training:</strong> Targeted sessions on discipline configuration, assessment tools, and school-level reports. Details coming soon.
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIAL ED -->
+    <div class="role-detail" id="role-sped">
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>For Special Education Coordinators</h3>
+          <div class="reassurance">A platform built to support our students — IEPs, 504s, and services, integrated into the student record.</div>
+        </div>
+        <div class="changes-grid">
+          <div class="change-col">
+            <h4 class="staying">What Stays the Same</h4>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Your compliance obligations — IEP timelines, manifestation determinations, FTE reporting</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Collaboration with school teams on student services</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>State assessment accommodations and waivers remain in effect</span></div>
+          </div>
+          <div class="change-col">
+            <h4 class="changing">What's New &amp; Better</h4>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Special Student Services (SSS) module: IEP, 504, ELL, MTSS, threat assessment, and health — all in one interface</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Automatic suspension limit alerts — configurable warnings when approaching manifestation determination threshold</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>E-signature capture for IEP meetings — parents can sign from their phone or during in-person meetings</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Caseload management with progress monitoring alerts tied to report card posting windows</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Medicaid billing data capture — log services, times, and codes for export to billing</span></div>
+          </div>
+        </div>
+        <div class="role-card-footer">
+          <strong>Training:</strong> Dedicated deep-dive with Focus Special Education specialists, separate from general staff training.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAMILIES -->
+    <div class="role-detail" id="role-families">
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>For Parents &amp; Families</h3>
+          <div class="reassurance">One app to stay connected to your child's education.</div>
+        </div>
+        <div class="changes-grid">
+          <div class="change-col">
+            <h4 class="staying">What Stays the Same</h4>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Access to your child's grades, attendance, and school information online</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>Communication from teachers and the school about your child</span></div>
+            <div class="change-item"><span class="icon check">&#10003;</span><span>The ability to reach your child's school directly with questions</span></div>
+          </div>
+          <div class="change-col">
+            <h4 class="changing">What's New &amp; Better</h4>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>One app and one portal for everything — grades, attendance, discipline, positive behaviors, and school announcements</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Messages from school arrive in your language — and you can reply in your language too</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>Push notifications when your child earns positive behavior awards</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>E-sign documents like IEP plans from your phone — no need to come into school for every signature</span></div>
+            <div class="change-item"><span class="icon new">&#9733;</span><span>School message boards with flyers, announcements, and classroom updates — right in the app</span></div>
+          </div>
+        </div>
+        <div class="role-card-footer">
+          <strong>Getting started:</strong> Download the Focus Community App (available on iPhone and Android) and set up your parent account. Instructions will be sent home before the school year begins.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE 4: FAQ
+     ============================================ -->
+<div class="page" id="page-faq">
+  <div class="section-wrap">
+    <div class="faq-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Answers to common questions about the Focus transition. This page will be updated as the project progresses.</p>
+    </div>
+
+    <div class="faq-categories">
+      <button class="faq-cat-btn active" data-cat="all" onclick="filterFaq('all')">All</button>
+      <button class="faq-cat-btn" data-cat="general" onclick="filterFaq('general')">General</button>
+      <button class="faq-cat-btn" data-cat="teachers" onclick="filterFaq('teachers')">For Teachers</button>
+      <button class="faq-cat-btn" data-cat="ops" onclick="filterFaq('ops')">For Ops &amp; Registrars</button>
+      <button class="faq-cat-btn" data-cat="training" onclick="filterFaq('training')">Training &amp; Support</button>
+      <button class="faq-cat-btn" data-cat="families" onclick="filterFaq('families')">For Families</button>
+    </div>
+
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>KIPP Miami &mdash; Focus SIS Transition &mdash; Questions? Reach out to your school's operations team.</div>
+  <div class="footer-built">Last updated March 2026 &nbsp;|&nbsp; KIPP Miami Data Team</div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+const faqs = [
+  {
+    cat: 'general',
+    q: 'Why is KIPP Miami switching to Focus?',
+    a: 'We\'ve outgrown our current setup of three separate platforms. Focus is a Florida-built student information system used by nearly every school district in the state. It consolidates PowerSchool, DeansList, and Illuminate into a single integrated platform — which means less switching between tools, stronger Florida compliance features, and a unified experience for staff, students, and families. It\'s a big change, and an incredible opportunity to optimize how we work across KIPP Miami.'
+  },
+  {
+    cat: 'general',
+    q: 'Is this just for Miami, or is the whole KIPP network switching?',
+    a: 'This is a KIPP Miami transition. Our New Jersey schools will continue using PowerSchool and DeansList. Focus is specifically designed for Florida\'s state reporting requirements, which is why it\'s the right fit for our Miami region.'
+  },
+  {
+    cat: 'general',
+    q: 'When does this happen?',
+    a: 'Focus will go live for the 2026-27 school year. Staff training will take place before go-live, and by the first day of school, all staff will be equipped and ready to use Focus.'
+  },
+  {
+    cat: 'general',
+    q: 'What happens to my data in PowerSchool?',
+    a: 'All student records, enrollment history, transcripts, grades, and other critical data will be migrated from PowerSchool into Focus. The data team will run multiple validation passes to ensure nothing is lost or incorrectly transferred. PowerSchool will remain accessible in read-only mode for a transition period.'
+  },
+  {
+    cat: 'general',
+    q: 'Who is managing this project?',
+    a: 'The transition is led by the KIPP Data Team in partnership with Miami regional operations and PAEC (the Panhandle Area Educational Consortium), which provides implementation support for Focus districts across Florida. Focus\'s own implementation team is also directly involved.'
+  },
+  {
+    cat: 'teachers',
+    q: 'Do I need to learn a whole new system from scratch?',
+    a: 'You\'ll learn a new interface, but the core tasks are the same: taking attendance, entering grades, communicating with parents, and managing your classroom. Focus is designed to be intuitive, and many teachers across Florida already use it daily. Hands-on training with a sandbox environment will be provided so you can practice before anything goes live.'
+  },
+  {
+    cat: 'teachers',
+    q: 'Will I still use DeansList for attendance and behavior tracking?',
+    a: 'No — DeansList will be replaced by Focus. Focus has its own attendance and discipline tracking, plus a Positive Behaviors module for recognizing students. If you\'re used to DeansList for culture tracking, you\'ll find similar functionality built into Focus, including a mobile app.'
+  },
+  {
+    cat: 'teachers',
+    q: 'What about Clever, i-Ready, Amplify, and other instructional tech apps?',
+    a: 'Those are not changing. Clever, i-Ready, Amplify, mClass, and other instructional technology apps you use daily will continue as-is. Focus replaces PowerSchool, DeansList, and Illuminate — not your classroom instructional tools.'
+  },
+  {
+    cat: 'teachers',
+    q: 'Can I message parents from Focus?',
+    a: 'Yes. Focus has a built-in communication system supporting email, SMS text messages, and automated phone calls — all from one place. Messages are translated into the family\'s home language automatically, and parents can reply in their language.'
+  },
+  {
+    cat: 'teachers',
+    q: 'Is there a mobile app?',
+    a: 'Yes. The Focus mobile app (iPhone and Android) gives teachers access to their gradebook, attendance, student information, positive behavior awards, and parent communication. Essentially everything you do on the desktop is available on your phone.'
+  },
+  {
+    cat: 'ops',
+    q: 'How does state reporting change?',
+    a: 'This is one of the biggest improvements. Focus was purpose-built for Florida state reporting. FTE submissions, DOE verification reports, SESIR, and all survey extracts are integrated with validation at point of entry — meaning errors get caught when data is entered, not when you\'re rushing to meet a submission deadline. The Course Code Directory also syncs nightly with the state.'
+  },
+  {
+    cat: 'ops',
+    q: 'What about scheduling?',
+    a: 'Focus includes a master schedule builder that automates section and period optimization based on student course requests. After the builder runs, you can fine-tune with drag-and-drop. Mass update tools let you change rooms, teachers, or other attributes across multiple sections at once.'
+  },
+  {
+    cat: 'ops',
+    q: 'What happens when a student transfers from another FL district?',
+    a: 'Focus has a feature called Focus Transfer. When you enroll a student from another Focus district — which is nearly every district in Florida — the system connects in real time and offers to import demographics, schedule, grades, transcripts, test history, discipline, immunizations, and ESE/ELL status. No manual re-entry needed.'
+  },
+  {
+    cat: 'training',
+    q: 'What training will I receive?',
+    a: 'Training will be role-specific and hands-on. Operations and admin staff will train first on configuration and daily workflows. Teachers will receive training focused on the gradebook, attendance, communication, and assessment tools. All training includes access to a sandbox environment for practice. The goal is simple: by the first day of school, every staff member will be confident and ready.'
+  },
+  {
+    cat: 'training',
+    q: 'What if I need help after go-live?',
+    a: 'Multiple levels of support will be available. Each school will have designated topic experts for key features as first-line peer support. The data team and operations team will be available for system-level questions. PAEC provides help desk support during business hours. And training refreshers will be available in the first weeks of school.'
+  },
+  {
+    cat: 'training',
+    q: 'Will there be written guides and video tutorials?',
+    a: 'Yes. Quick-reference guides, step-by-step documentation, and video walkthroughs will be developed for each major workflow. Focus also has a built-in help system — click the help button on any screen to see documentation and videos for that specific feature.'
+  },
+  {
+    cat: 'families',
+    q: 'How will parents access the new system?',
+    a: 'Parents will use the Focus Community App (free, available on iPhone and Android) or log into the Focus parent portal through a web browser. Setup instructions will be sent home before the start of the school year.'
+  },
+  {
+    cat: 'families',
+    q: 'Will I still be able to see my child\'s grades and attendance?',
+    a: 'Yes — and more. The Focus parent portal shows grades, attendance, discipline records, positive behavior awards, and school announcements in one place. You\'ll also receive push notifications for important updates.'
+  },
+  {
+    cat: 'families',
+    q: 'What if I don\'t speak English?',
+    a: 'Focus automatically translates all communications into your home language — over 70 languages are supported. You can reply to messages in your own language, and the school will receive your message in English. This works across text messages, emails, and phone calls.'
+  }
+];
+
+function renderFaqs(filter) {
+  const list = document.getElementById('faqList');
+  const filtered = filter === 'all' ? faqs : faqs.filter(f => f.cat === filter);
+  list.innerHTML = filtered.map(f => `
+    <div class="faq-item" data-cat="${f.cat}">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>${f.q}</span>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">${f.a}</div>
+    </div>
+  `).join('');
+}
+
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+function filterFaq(cat) {
+  document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  renderFaqs(cat);
+}
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelector(`.nav-tab[data-page="${page}"]`).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('navTabs').classList.remove('open');
+}
+
+function showRole(role) {
+  document.querySelectorAll('.role-btn').forEach(b => b.classList.toggle('active', b.dataset.role === role));
+  document.querySelectorAll('.role-detail').forEach(d => d.classList.remove('active'));
+  document.getElementById('role-' + role).classList.add('active');
+}
+
+function toggleMobileNav() { document.getElementById('navTabs').classList.toggle('open'); }
+
+renderFaqs('all');
+</script>
+</body>
+</html>
